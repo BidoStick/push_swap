@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 14:08:06 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/17 16:39:10 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:34:33 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ static inline int	ft_checker(t_box *box, int len)
 	int i;
 	int comp;
 	t_box *tmp;
+	int rs;
 
 	comp = 0;
+	rs = 0;
 	if (ft_count_nbr(box, 1) == 0)
 		return (0);
-	if (ft_count_nbr(box, 1) < len)
+	if ((rs = ft_count_nbr(box, 1)) != len)
 		return (0);
 	tmp = box;
 	while (tmp)
@@ -56,18 +58,15 @@ static inline int	ft_checker(t_box *box, int len)
 			comp = tmp->nbr;
 			break ;
 		}
-		if (tmp->next != NULL)
-			tmp = tmp->next;
-		else
-			break ;
+		tmp = tmp->next;
 	}
 	tmp = box;
 	i = 1;
-	while (i < len)
+	while (i < len && tmp)
 	{
 		if (tmp->i == i)
 		{
-			if (tmp->nbr < comp)
+			if (comp > tmp->nbr)
 			{
 				i++;
 				comp = tmp->nbr;
@@ -76,10 +75,7 @@ static inline int	ft_checker(t_box *box, int len)
 			else
 				return (0);
 		}
-		if (tmp->next != NULL)
-			tmp = tmp->next;
-		else
-			break ;
+		tmp = tmp->next;
 	}
 	return (1);
 }
@@ -99,6 +95,8 @@ int	main(int ac, char **av)
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");
+		boxdel(&box);
+		comdel(&com);
 	}
 	else
 		ft_putstr_fd("Error\n", 2);

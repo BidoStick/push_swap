@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 15:27:51 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/17 15:30:20 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:17:56 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ static void ft_rotate_rev_now(t_box *box, int len, int pile)
 			box->i = len - 1;
 		else
 			box->i--;
-		if (box->next != NULL)
-			box = box->next;
-		else
-			break ;
+		box = box->next;
 	}
 }
 

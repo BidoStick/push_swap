@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 15:42:41 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/17 16:11:50 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:38:10 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ int ft_checknbr(char *str, t_box *box)
 			ft_putstr_fd("Error\n", 2);
 			exit(-1);
 		}
-		if (!box->next)
-			break ;
 		box = box->next;
 	}
 	return (nbr);
@@ -72,7 +70,7 @@ int ft_checknbr(char *str, t_box *box)
 
 char *ft_checkcom(char *str)
 {
-	if (!(ft_strstr("sarrsbrrrssrraparrbpbrarb", str)))
+	if (!(ft_strstr("sa sb ss pa pb ra rb rr rra rrb rrr", str)))
 	{
 		ft_putstr_fd("Error\n", 2);
 		exit(-1);

@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 17:18:48 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/17 16:11:56 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2016/12/20 15:54:40 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,13 @@
 
 typedef	struct		s_com
 {
-	char			*com;
+	enum {
+		s,
+		p,
+		r,
+		rr
+	} com;
+	int pile;
 	struct s_com	*next;
 }					t_com;
 
@@ -40,5 +46,8 @@ int		ft_count_nbr(t_box *box, int pile);
 void	ft_push(t_box *box, int pile);
 void	ft_rotate(t_box *box, int pile);
 void	ft_rotate_rev(t_box *box, int pile);
+void	comdel(t_com **com);
+void	boxdel(t_box **box);
+int	ft_getpile(char *str);
 
 #endif

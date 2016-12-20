@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 13:38:47 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/17 15:14:35 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:52:55 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ static void	ft_push_now(t_box *box, int len1, int len2, int pile)
 				box->pile = 1;
 			break ;
 		}
-		if (box->next != NULL)
-			box = box->next;
-		else
-			break ;
+		box = box->next;
 	}
 }
 

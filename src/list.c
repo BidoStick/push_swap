@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 17:28:47 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/17 14:42:44 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:00:02 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,15 @@ t_com	*ft_newcom(char *command, t_com **com)
 	tmp = *com;
 	if (!(newcom = (t_com*)malloc(sizeof(t_com))))
 		return (NULL);
-	if (!(newcom->com = ft_strnew(sizeof(char) * ft_strlen(command))))
-		return (NULL);
-	ft_memcpy(newcom->com, command, ft_strlen(command));
+	if (ft_strstr("sa sb ss", command))
+		newcom->com = s;
+	else if (ft_strstr("pa pb", command))
+		newcom->com = p;
+	else if (ft_strstr("ra rb rr", command))
+		newcom->com = r;
+	else if (ft_strstr("rra rrb rrr", command))
+		newcom->com = rr;
+	newcom->pile = ft_getpile(command);
 	newcom->next = NULL;
 	if (*com == NULL)
 		*com = newcom;
@@ -53,4 +59,24 @@ t_com	*ft_newcom(char *command, t_com **com)
 		tmp->next = newcom;
 	}
 	return (newcom);
+}
+
+void	boxdel(t_box **box)
+{
+	if (*box)
+	{
+		boxdel(&(*box)->next);
+		free(*box);
+		*box = NULL;
+	}
+}
+
+void	comdel(t_com **com)
+{
+	if (*com)
+	{
+		comdel(&(*com)->next);
+		free(*com);
+		*com = NULL;
+	}
 }

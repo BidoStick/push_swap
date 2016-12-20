@@ -6,13 +6,13 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 18:44:31 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/17 15:35:39 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2016/12/20 16:46:56 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_getpile(char *str)
+int	ft_getpile(char *str)
 {
 	int i;
 	char c;
@@ -39,12 +39,9 @@ int		ft_count_nbr(t_box *box, int pile)
 	len = 0;
 	while (box)
 	{
-		if (pile > 0 && box->pile == pile)
+		if (box->pile == pile)
 			len++;
-		if (box->next != NULL)
-			box = box->next;
-		else
-			break ;
+		box = box->next;
 	}
 	return (len);
 }
@@ -52,24 +49,19 @@ int		ft_count_nbr(t_box *box, int pile)
 void	ft_execute(t_box *box, t_com *com)
 {
 	t_com *tmp;
-	t_box *tmp2;
 
 	tmp = com;
-	tmp2 = box;
 	while (tmp)
 	{
-		if (ft_strstr("sasbss", tmp->com))
-			ft_swap(box, ft_getpile(tmp->com));
-		else if (ft_strstr("papb", tmp->com))
-			ft_push(box, ft_getpile(tmp->com));
-		else if (ft_strstr("rarbrr", tmp->com))
-			ft_rotate(box, ft_getpile(tmp->com));
-		else if (ft_strstr("rrarrbrrr", tmp->com))
-			ft_rotate_rev(box, ft_getpile(tmp->com));
-		if (tmp->next != NULL)
-			tmp = tmp->next;
-		else
-			break ;
+		if (tmp->com == s)
+			ft_swap(box, tmp->pile);
+		else if (tmp->com == p)
+			ft_push(box, tmp->pile);
+		else if (tmp->com == r)
+			ft_rotate(box, tmp->pile);
+		else if (tmp->com == rr)
+			ft_rotate_rev(box, tmp->pile);
+		tmp = tmp->next;
 	}
 }
 	
