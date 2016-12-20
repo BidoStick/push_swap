@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 14:08:06 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/20 16:34:33 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2016/12/20 17:16:23 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,5 @@ int	main(int ac, char **av)
 		boxdel(&box);
 		comdel(&com);
 	}
-	else
-		ft_putstr_fd("Error\n", 2);
 	return (0);
 }
