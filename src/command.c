@@ -6,7 +6,7 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 18:44:31 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/20 16:46:56 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/01/03 17:54:50 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,32 @@ int	ft_getpile(char *str)
 		return (0);
 }
 
-int		ft_count_nbr(t_box *box, int pile)
+unsigned int		ft_count_nbr(t_box *box)
 {
-	int len;
+	unsigned int len;
 
 	len = 0;
 	while (box)
 	{
-		if (box->pile == pile)
-			len++;
+		len++;
 		box = box->next;
 	}
 	return (len);
 }
 
-void	ft_execute(t_box *box, t_com *com)
+void	ft_execute(t_box **ba, t_box **bb, t_com *com)
 {
-	t_com *tmp;
-
-	tmp = com;
-	while (tmp)
+	while (com)
 	{
-		if (tmp->com == s)
-			ft_swap(box, tmp->pile);
-		else if (tmp->com == p)
-			ft_push(box, tmp->pile);
-		else if (tmp->com == r)
-			ft_rotate(box, tmp->pile);
-		else if (tmp->com == rr)
-			ft_rotate_rev(box, tmp->pile);
-		tmp = tmp->next;
+		if (com->com == s)
+			ft_swap(ba, bb, com->pile);
+		else if (com->com == p)
+			ft_push(ba, bb, com->pile);
+		else if (com->com == r)
+			ft_rotate(ba, bb, com->pile);
+		else if (com->com == rr)
+			ft_rotate_rev(ba, bb, com->pile);
+		com = com->next;
 	}
 }
 	

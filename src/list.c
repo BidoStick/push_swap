@@ -6,28 +6,29 @@
 /*   By: jgoncalv <jgoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 17:28:47 by jgoncalv          #+#    #+#             */
-/*   Updated: 2016/12/20 16:00:02 by jgoncalv         ###   ########.fr       */
+/*   Updated: 2017/01/03 13:40:02 by jgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_box	*ft_newbox(int nbr, int i, t_box **box)
+t_box	*ft_newbox(int nbr, t_box **box)
 {
 	t_box *newbox;
+	t_box *tmp;
 
+	tmp = *box;
 	if (!(newbox = (t_box*)malloc(sizeof(t_box))))
 		return (NULL);
 	newbox->nbr = nbr;
-	newbox->i = i;
-	newbox->pile = 1;
 	newbox->next = NULL;
 	if (*box == NULL)
 		*box = newbox;
 	else
 	{
-		newbox->next = *box;
-		*box = newbox;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = newbox;
 	}
 	return (newbox);
 }
@@ -54,7 +55,7 @@ t_com	*ft_newcom(char *command, t_com **com)
 		*com = newcom;
 	else
 	{
-		while (tmp->next != NULL)
+		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = newcom;
 	}
