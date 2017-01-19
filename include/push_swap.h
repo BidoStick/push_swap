@@ -72,6 +72,8 @@ int					ft_checker(t_box *box, int len);
 
 void				start(t_box **ba, t_box **bb);
 
+void				affichage(t_box *ba, t_box *bb);
+
 int					check_nbr(t_box *box, int small, int big);
 void				usecom(t_box **ba, t_box **bb, char *str, int i);
 

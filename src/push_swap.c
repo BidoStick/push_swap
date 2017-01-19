@@ -40,14 +40,16 @@ int			main(int ac, char **av)
 {
 	t_box	*ba;
 	t_box	*bb;
+	unsigned int len;
 
 	ba = NULL;
 	bb = NULL;
 	if (ac > 1)
 	{
-		ft_getnbr(av + 1, ac - 1, &ba);
+		len = ft_getnbr(av + 1, ac - 1, &ba);
 		ft_tri(ba);
-		start(&ba, &bb);
+		if (ft_checker(ba, len) != 1)
+			start(&ba, &bb);
 		boxdel(&ba);
 		boxdel(&bb);
 	}

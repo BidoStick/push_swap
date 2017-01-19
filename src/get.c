@@ -51,7 +51,7 @@ int				ft_checker(t_box *box, int len)
 	int	lnb;
 
 	lnb = 0;
-	if (box == NULL || box->next == NULL)
+	if (box == NULL)
 		return (0);
 	nbr = box->nbr;
 	lnb++;
