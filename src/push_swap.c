@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void	ft_tri(t_box *box)
+static void	ft_tri(t_box *box)
 {
-	t_box *tmp;
-	t_box *tmptmp;
-	int nbr;
-	unsigned int i;
+	t_box			*tmp;
+	t_box			*tmptmp;
+	int				nbr;
+	unsigned int	i;
 
 	tmptmp = box;
 	nbr = box->nbr;
@@ -36,11 +36,10 @@ void	ft_tri(t_box *box)
 	}
 }
 
-int	main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_box	*ba;
 	t_box	*bb;
-	int		i = 0;
 
 	ba = NULL;
 	bb = NULL;
@@ -48,11 +47,7 @@ int	main(int ac, char **av)
 	{
 		ft_getnbr(av + 1, ac - 1, &ba);
 		ft_tri(ba);
-		while (ft_checker(ba, ac - 1) != 1 && i < 1)
-		{
-			parse(&ba, &bb);
-			i++;
-		}
+		start(&ba, &bb);
 		boxdel(&ba);
 		boxdel(&bb);
 	}

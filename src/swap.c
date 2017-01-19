@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-static inline void ft_swap_now(t_box **box)
+static inline void	ft_swap_now(t_box **box)
 {
-	t_box *tmp;
+	t_box	*tmp;
 
 	tmp = *box;
 	*box = (*box)->next;
@@ -22,7 +22,7 @@ static inline void ft_swap_now(t_box **box)
 	(*box)->next = tmp;
 }
 
-void	ft_swap(t_box **ba, t_box **bb, int pile)
+void				ft_swap(t_box **ba, t_box **bb, int pile)
 {
 	if ((pile == 1 || pile == 0) && *ba && (*ba)->next)
 		ft_swap_now(ba);

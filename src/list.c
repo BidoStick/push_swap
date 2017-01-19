@@ -14,8 +14,8 @@
 
 t_box	*ft_newbox(int nbr, t_box **box)
 {
-	t_box *newbox;
-	t_box *tmp;
+	t_box	*newbox;
+	t_box	*tmp;
 
 	tmp = *box;
 	if (!(newbox = (t_box*)malloc(sizeof(t_box))))

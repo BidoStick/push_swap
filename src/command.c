@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-int	ft_getpile(char *str)
+int				ft_getpile(char *str)
 {
-	int i;
-	char c;
+	int		i;
+	char	c;
 
 	i = 0;
 	while (str[i])
@@ -32,9 +32,9 @@ int	ft_getpile(char *str)
 		return (0);
 }
 
-unsigned int		ft_count_nbr(t_box *box)
+unsigned int	ft_count_nbr(t_box *box)
 {
-	unsigned int len;
+	unsigned int	len;
 
 	len = 0;
 	while (box)
@@ -45,7 +45,7 @@ unsigned int		ft_count_nbr(t_box *box)
 	return (len);
 }
 
-void	ft_execute(t_box **ba, t_box **bb, t_com *com)
+void			ft_execute(t_box **ba, t_box **bb, t_com *com)
 {
 	while (com)
 	{
@@ -60,4 +60,3 @@ void	ft_execute(t_box **ba, t_box **bb, t_com *com)
 		com = com->next;
 	}
 }
-	

@@ -14,19 +14,21 @@
 
 int	main(int ac, char **av)
 {
-	t_box *ba;
-	t_box *bb;
-	t_com *com;
+	t_box			*ba;
+	t_box			*bb;
+	t_com			*com;
+	unsigned int	len;
 
 	ba = NULL;
 	bb = NULL;
 	com = NULL;
+	len = 0;
 	if (ac > 1)
 	{
-		ft_getnbr(av + 1, ac - 1, &ba);
+		len = ft_getnbr(av + 1, ac - 1, &ba);
 		ft_getcom(&com);
 		ft_execute(&ba, &bb, com);
-		if (ft_checker(ba, ac - 1) == 1)
+		if (ft_checker(ba, len) == 1)
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");

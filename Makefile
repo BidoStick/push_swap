@@ -36,7 +36,7 @@ SRC_NAME = checker.c\
 		rotate.c\
 		rotate_rev.c\
 		get.c\
-		check.c\
+		check.c
 
 SRC_NAME2 = push_swap.c\
 		list.c\
@@ -47,14 +47,13 @@ SRC_NAME2 = push_swap.c\
 		rotate_rev.c\
 		get.c\
 		check.c\
-		quicksort.c\
-		affichage.c\
-		separation.c\
-		search.c\
-		range.c\
+		usecom.c\
+		nouveau.c\
+		pushback.c\
 		sort.c\
 		restore.c\
-		usecom.c
+		move.c\
+		tri.c
 
 AR = ar rc
 

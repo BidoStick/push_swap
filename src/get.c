@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-void	ft_getnbr(char **tab, int size, t_box **box)
+unsigned int	ft_getnbr(char **tab, unsigned int size, t_box **box)
 {
-	int i;
+	unsigned int	i;
 
 	i = 0;
 	if (size == 1)
@@ -33,21 +33,22 @@ void	ft_getnbr(char **tab, int size, t_box **box)
 		}
 		i++;
 	}
+	return (size);
 }
 
-void	ft_getcom(t_com **com)
+void			ft_getcom(t_com **com)
 {
-	char *str;
+	char	*str;
 
 	str = NULL;
 	while (get_next_line(0, &str) == 1)
 		ft_newcom(ft_checkcom(str), com);
 }
 
-int	ft_checker(t_box *box, int len)
+int				ft_checker(t_box *box, int len)
 {
-	int nbr;
-	int lnb;
+	int	nbr;
+	int	lnb;
 
 	lnb = 0;
 	if (box == NULL || box->next == NULL)

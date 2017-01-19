@@ -12,48 +12,56 @@
 
 #include "push_swap.h"
 
-static inline void	restore_a(t_box **ba, t_box **bb, t_base *base)
+static int	direction(t_box *box, t_base *base)
 {
-	//ft_printf("restore_a\n");
-	usecom(ba, bb, "rra\n", 1);
-	//affichage(*ba, *bb);
-	restore(ba, bb, base);
-}
+	unsigned int	len;
+	unsigned int	len_i;
 
-static inline void	restore_b(t_box **ba, t_box **bb, t_base *base)
-{
-	//ft_printf("restore_b\n");
-	usecom(ba, bb, "rrb\n", 2);
-	//affichage(*ba, *bb);
-	restore(ba, bb, base);
-}
-
-static inline void	restore_ab(t_box **ba, t_box **bb, t_base *base)
-{
-	//ft_printf("restore_ab\n");
-	usecom(ba, bb, "rrr\n", 3);
-	//affichage(*ba, *bb);
-	restore(ba, bb, base);
-}
-
-void				restore(t_box **ba, t_box **bb, t_base *base)
-{
-	t_box *tmpa;
-	t_box *tmpb;
-
-	tmpa = *ba;
-	tmpb = *bb;
-	//ft_putstr("RESTORE\n");
-	while (tmpa && tmpa->next)
-		tmpa = tmpa->next;
-	while (tmpb && tmpb->next)
-		tmpb = tmpb->next;
-	if (base->okbas1 == 1 && tmpa->nbr != base->basea && base->okbas2 == 1 && tmpb->nbr != base->baseb)
-		restore_ab(ba, bb, base);
-	else if (base->okbas1 == 1 && tmpa->nbr != base->basea)
-		restore_a(ba, bb, base);
-	else if (base->okbas2 == 1 && tmpb->nbr != base->baseb)
-		restore_b(ba, bb, base);
+	len = ft_count_nbr(box);
+	len_i = 0;
+	while (box->i != base->a)
+	{
+		len_i++;
+		box = box->next;
+	}
+	if (len_i > len / 2)
+		return (1);
 	else
-		return ;
+		return (2);
+}
+
+static void	restore_a(t_box **ba, t_box **bb, t_nbr lnb, t_base *base)
+{
+	check_tri_a(*ba, base);
+	if (direction(*ba, base) == 1)
+	{
+		if (lastnbr(*ba) != base->a)
+		{
+			if (*bb && (*bb)->next
+				&& lastnbr(*bb) < (lnb.big - lnb.small) / 2 + lnb.small)
+				usecom(ba, bb, "rrr\n", 0);
+			else
+				usecom(ba, bb, "rra\n", 1);
+			restore(ba, bb, lnb, base);
+		}
+	}
+	else
+	{
+		if (lastnbr(*ba) != base->a)
+		{
+			if (*bb && (*bb)->next
+				&& lastnbr(*bb) >= (lnb.big - lnb.small) / 2 + lnb.small)
+				usecom(ba, bb, "rr\n", 0);
+			else
+				usecom(ba, bb, "ra\n", 1);
+			restore(ba, bb, lnb, base);
+		}
+	}
+}
+
+void		restore(t_box **ba, t_box **bb, t_nbr lnb, t_base *base)
+{
+	pushback(ba, bb, lnb, base);
+	if (lastnbr(*ba) != base->a)
+		restore_a(ba, bb, lnb, base);
 }

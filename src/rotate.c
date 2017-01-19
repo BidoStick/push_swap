@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static inline void ft_rotate_now(t_box **box)
+static	inline	void	ft_rotate_now(t_box **box)
 {
 	t_box *tmp;
 
@@ -25,7 +25,7 @@ static inline void ft_rotate_now(t_box **box)
 	tmp->next = NULL;
 }
 
-void	ft_rotate(t_box **ba, t_box **bb, int pile)
+void					ft_rotate(t_box **ba, t_box **bb, int pile)
 {
 	if ((pile == 1 || pile == 0) && *ba && (*ba)->next)
 		ft_rotate_now(ba);

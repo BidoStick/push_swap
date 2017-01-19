@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int		ft_isdig(char *str)
+static int	ft_isdig(char *str)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ static int		ft_isdig(char *str)
 
 static int	ft_isint(char *str)
 {
-	intmax_t nbr;
+	intmax_t	nbr;
 
 	nbr = ft_atoi(str);
 	if (nbr < INT_MIN)
@@ -49,9 +49,23 @@ static int	ft_isint(char *str)
 	return (nbr);
 }
 
-int ft_checknbr(char *str, t_box *box)
+int			check_nbr(t_box *box, int small, int big)
 {
-	int nbr;
+	int	i;
+
+	i = 0;
+	while (box)
+	{
+		if (box->nbr >= small && box->nbr <= big)
+			i++;
+		box = box->next;
+	}
+	return (i);
+}
+
+int			ft_checknbr(char *str, t_box *box)
+{
+	int	nbr;
 
 	nbr = 0;
 	ft_isdig(str);
@@ -68,9 +82,19 @@ int ft_checknbr(char *str, t_box *box)
 	return (nbr);
 }
 
-char *ft_checkcom(char *str)
+char		*ft_checkcom(char *str)
 {
-	if (!(ft_strstr("sa sb ss pa pb ra rb rr rra rrb rrr", str)))
+	if (ft_strcmp("sa", str) != 0 &&
+	ft_strcmp("sb", str) != 0 &&
+	ft_strcmp("ss", str) != 0 &&
+	ft_strcmp("ra", str) != 0 &&
+	ft_strcmp("rb", str) != 0 &&
+	ft_strcmp("rr", str) != 0 &&
+	ft_strcmp("rrr", str) != 0 &&
+	ft_strcmp("rra", str) != 0 &&
+	ft_strcmp("rrb", str) != 0 &&
+	ft_strcmp("pb", str) != 0 &&
+	ft_strcmp("pa", str) != 0)
 	{
 		ft_putstr_fd("Error\n", 2);
 		exit(-1);

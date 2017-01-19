@@ -14,13 +14,27 @@
 
 void	usecom(t_box **ba, t_box **bb, char *str, int i)
 {
-	ft_putstr(str);
-	if (ft_strcmp(str, "ra\n") == 0 || ft_strcmp(str, "rb\n") == 0 || ft_strcmp(str, "rr\n") == 0)
+	if (!ft_strcmp(str, "ra\n") || !ft_strcmp(str, "rb\n")
+		|| !ft_strcmp(str, "rr\n"))
+	{
+		ft_putstr(str);
 		ft_rotate(ba, bb, i);
-	else if (ft_strcmp(str, "rra\n") == 0 || ft_strcmp(str, "rrb\n") == 0 || ft_strcmp(str, "rrr\n") == 0)
+	}
+	else if (!ft_strcmp(str, "rra\n") || !ft_strcmp(str, "rrb\n")
+		|| !ft_strcmp(str, "rrr\n"))
+	{
+		ft_putstr(str);
 		ft_rotate_rev(ba, bb, i);
-	else if (ft_strcmp(str, "sa\n") == 0 || ft_strcmp(str, "sb\n") == 0 || ft_strcmp(str, "ss\n") == 0)
+	}
+	else if (!ft_strcmp(str, "sa\n") || !ft_strcmp(str, "sb\n")
+		|| !ft_strcmp(str, "ss\n"))
+	{
+		ft_putstr(str);
 		ft_swap(ba, bb, i);
-	else if (ft_strcmp(str, "pa\n") == 0 || ft_strcmp(str, "pb\n") == 0)
+	}
+	else if (!ft_strcmp(str, "pa\n") || !ft_strcmp(str, "pb\n"))
+	{
+		ft_putstr(str);
 		ft_push(ba, bb, i);
+	}
 }

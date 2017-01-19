@@ -22,7 +22,7 @@ static inline void	ft_push_now(t_box **b1, t_box **b2)
 	*b2 = tmp;
 }
 
-void	ft_push(t_box **ba, t_box **bb, int pile)
+void				ft_push(t_box **ba, t_box **bb, int pile)
 {
 	if (pile == 1 && *bb != NULL)
 		ft_push_now(bb, ba);
