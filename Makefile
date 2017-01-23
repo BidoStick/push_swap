@@ -79,7 +79,7 @@ SRC2 = $(addprefix $(SRC_PATH)/,$(SRC_NAME2))
 
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
-OBJ2 = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME2))
+OBJ2 = $(addprefix $(OBJ_PATH2)/,$(OBJ_NAME2))
 
 all: $(NAME) $(NAME2)
 
@@ -105,13 +105,13 @@ $(OBJ_PATH2)/%.o: $(SRC_PATH)/%.c
 
 clean:
 	@rm -f $(OBJ) $(OBJ2)
-	@rmdir $(OBJ_PATH) 2> /def/null || true
-	@rmdir $(OBJ_PATH2) 2> /def/null || true
+	@rm -rf $(OBJ_PATH) || true
+	@rm -rf $(OBJ_PATH2) || true
 	@echo $(OBJ_PATH)" et "$(OBJ_PATH2)" supprimé !"
 
 fclean: clean
 	@rm -f $(NAME) $(NAME2)
-	@echo "Objet et executable de "$(NAME)" et "$(NAME2)" supprimer !"
+	@echo "Executable de "$(NAME)" et "$(NAME2)" supprimé !"
 
 re: fclean all
 	@echo "Make re done !"

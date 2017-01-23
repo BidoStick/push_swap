@@ -36,6 +36,8 @@ int					main(int ac, char **av)
 	int				i;
 
 	i = 1;
+	ba = NULL;
+	bb = NULL;
 	opt.opt = nul;
 	if (ac > 1)
 	{
