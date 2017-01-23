@@ -12,29 +12,45 @@
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+static inline void	noodle(t_box **ba, t_box **bb, unsigned int len, t_opt opt)
+{
+	t_com			*com;
+
+	com = NULL;
+	ft_getcom(&com);
+	ft_execute(ba, bb, com, opt);
+	if (ft_checker(*ba, len) == 1)
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
+	boxdel(ba);
+	boxdel(bb);
+	comdel(&com);
+}
+
+int					main(int ac, char **av)
 {
 	t_box			*ba;
 	t_box			*bb;
-	t_com			*com;
-	unsigned int	len;
+	t_opt			opt;
+	int				i;
 
-	ba = NULL;
-	bb = NULL;
-	com = NULL;
-	len = 0;
+	i = 1;
+	opt.opt = nul;
 	if (ac > 1)
 	{
-		len = ft_getnbr(av + 1, ac - 1, &ba);
-		ft_getcom(&com);
-		ft_execute(&ba, &bb, com);
-		if (ft_checker(ba, len) == 1)
-			ft_putstr("OK\n");
-		else
-			ft_putstr("KO\n");
-		boxdel(&ba);
-		boxdel(&bb);
-		comdel(&com);
+		if (ft_strcmp(av[i], "-c") == 0)
+		{
+			opt.opt = c;
+			i++;
+		}
+		else if (ft_strcmp(av[i], "-v") == 0)
+		{
+			opt.opt = v;
+			i++;
+		}
+		if (ac > i)
+			noodle(&ba, &bb, ft_getnbr(av + i, ac - i, &ba), opt);
 	}
 	return (0);
 }

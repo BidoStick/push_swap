@@ -12,40 +12,63 @@
 
 #include "push_swap.h"
 
-unsigned int	ft_getnbr(char **tab, unsigned int size, t_box **box)
+static unsigned int	banzai(char **tab, t_box **box)
+{
+	unsigned int size;
+
+	size = 0;
+	tab = ft_strsplit(tab[0], ' ');
+	if (tab[0] == '\0')
+		exit(0);
+	while (tab[size])
+	{
+		if (!(ft_newbox(ft_checknbr(tab[size], *box), box)))
+		{
+			ft_putstr_fd("Error\n", 2);
+			exit(1);
+		}
+		ft_strdel(&tab[size]);
+		size++;
+	}
+	free(tab);
+	return (size);
+}
+
+unsigned int		ft_getnbr(char **tab, unsigned int size, t_box **box)
 {
 	unsigned int	i;
 
 	i = 0;
 	if (size == 1)
+		size = banzai(tab, box);
+	else
 	{
-		tab = ft_strsplit(tab[0], ' ');
-		size = 0;
-		while (tab[size])
-			size++;
-	}
-	while (i < size)
-	{
-		if (!(ft_newbox(ft_checknbr(tab[i], *box), box)))
+		while (i < size)
 		{
-			ft_putstr_fd("Error\n", 2);
-			exit(1);
+			if (!(ft_newbox(ft_checknbr(tab[i], *box), box)))
+			{
+				ft_putstr_fd("Error\n", 2);
+				exit(1);
+			}
+			i++;
 		}
-		i++;
 	}
 	return (size);
 }
 
-void			ft_getcom(t_com **com)
+void				ft_getcom(t_com **com)
 {
 	char	*str;
 
 	str = NULL;
 	while (get_next_line(0, &str) == 1)
+	{
 		ft_newcom(ft_checkcom(str), com);
+		ft_strdel(&str);
+	}
 }
 
-int				ft_checker(t_box *box, int len)
+int					ft_checker(t_box *box, int len)
 {
 	int	nbr;
 	int	lnb;

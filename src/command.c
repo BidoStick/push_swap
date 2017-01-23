@@ -45,7 +45,7 @@ unsigned int	ft_count_nbr(t_box *box)
 	return (len);
 }
 
-void			ft_execute(t_box **ba, t_box **bb, t_com *com)
+void			ft_execute(t_box **ba, t_box **bb, t_com *com, t_opt opt)
 {
 	while (com)
 	{
@@ -57,6 +57,10 @@ void			ft_execute(t_box **ba, t_box **bb, t_com *com)
 			ft_rotate(ba, bb, com->pile);
 		else if (com->com == rr)
 			ft_rotate_rev(ba, bb, com->pile);
+		if (opt.opt == c)
+			affichage(*ba, *bb, com);
+		else if (opt.opt == v)
+			affichv(*ba, *bb, com);
 		com = com->next;
 	}
 }

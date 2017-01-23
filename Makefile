@@ -36,7 +36,9 @@ SRC_NAME = checker.c\
 		rotate.c\
 		rotate_rev.c\
 		get.c\
-		check.c
+		check.c\
+		affichage.c\
+		affichv.c
 
 SRC_NAME2 = push_swap.c\
 		list.c\
@@ -47,6 +49,8 @@ SRC_NAME2 = push_swap.c\
 		rotate_rev.c\
 		get.c\
 		check.c\
+		affichage.c\
+		affichv.c\
 		usecom.c\
 		nouveau.c\
 		pushback.c\

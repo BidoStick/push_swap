@@ -97,7 +97,7 @@ char		*ft_checkcom(char *str)
 	ft_strcmp("pa", str) != 0)
 	{
 		ft_putstr_fd("Error\n", 2);
-		exit(-1);
+		exit(1);
 	}
 	return (str);
 }

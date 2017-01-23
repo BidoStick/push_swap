@@ -38,11 +38,7 @@ void		remove_pushback_a(t_box **ba, t_box **bb, t_nbr lnb, t_base *base)
 	{
 		if ((*bb)->i == base->ni && lastnbr(*ba) == base->a)
 		{
-			base->a = base->ni;
-			if (base->a == base->ni)
-				base->ni++;
 			usecom(ba, bb, "pa\n", 1);
-			usecom(ba, bb, "ra\n", 1);
 			remove_pushback_a(ba, bb, lnb, base);
 		}
 	}

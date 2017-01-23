@@ -17,6 +17,15 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 
+typedef	struct		s_opt
+{
+	enum {
+		nul,
+		v,
+		c
+	}				opt;
+}					t_opt;
+
 typedef	struct		s_com
 {
 	enum {
@@ -50,6 +59,10 @@ typedef struct		s_base
 	unsigned int	ni;
 }					t_base;
 
+void				affichage(t_box *ba, t_box *bb, t_com *com);
+void				affichv(t_box *ba, t_box *bb, t_com *com);
+void				cmd(t_com *com);
+
 t_box				*ft_newbox(int nbr, t_box **box);
 t_com				*ft_newcom(char *command, t_com **com);
 void				boxdel(t_box **box);
@@ -67,12 +80,10 @@ void				ft_push(t_box **ba, t_box **bb, int pile);
 void				ft_rotate(t_box **ba, t_box **bb, int pile);
 void				ft_rotate_rev(t_box **ba, t_box **bb, int pile);
 
-void				ft_execute(t_box **ba, t_box **bb, t_com *com);
+void				ft_execute(t_box **ba, t_box **bb, t_com *com, t_opt opt);
 int					ft_checker(t_box *box, int len);
 
 void				start(t_box **ba, t_box **bb);
-
-void				affichage(t_box *ba, t_box *bb);
 
 int					check_nbr(t_box *box, int small, int big);
 void				usecom(t_box **ba, t_box **bb, char *str, int i);

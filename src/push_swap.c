@@ -38,9 +38,9 @@ static void	ft_tri(t_box *box)
 
 int			main(int ac, char **av)
 {
-	t_box	*ba;
-	t_box	*bb;
-	unsigned int len;
+	t_box			*ba;
+	t_box			*bb;
+	unsigned int	len;
 
 	ba = NULL;
 	bb = NULL;

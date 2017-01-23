@@ -30,7 +30,7 @@ static int	destinationb(t_box *box, t_nbr lnb, t_base *base)
 
 	len_i = 1;
 	len = ft_count_nbr(box);
-	while (box->i < base->ni || box->i >= lnb.big)
+	while (box && (box->i < base->ni || box->i >= lnb.big))
 	{
 		len_i++;
 		box = box->next;
@@ -51,7 +51,14 @@ static void	move_a(t_box **ba, t_box **bb, t_nbr lnb, t_base *base)
 				|| lnb.small == lnb.big))
 				usecom(ba, bb, "pb\n", 2);
 			else
-				usecom(ba, bb, "ra\n", 1);
+			{
+				if (*bb && (*bb)->next
+					&& destinationb(*bb, lnb, base) == 2
+					&& (*bb)->i >= (lnb.big - lnb.small) / 2 + lnb.small)
+					usecom(ba, bb, "rr\n", 0);
+				else
+					usecom(ba, bb, "ra\n", 1);
+			}
 		}
 		pushback(ba, bb, lnb, base);
 	}
