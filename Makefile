@@ -104,6 +104,7 @@ $(OBJ_PATH2)/%.o: $(SRC_PATH)/%.c
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_LIB) -o $@ -c $<
 
 clean:
+	@make fclean -C $(LIB)
 	@rm -f $(OBJ) $(OBJ2)
 	@rm -rf $(OBJ_PATH) || true
 	@rm -rf $(OBJ_PATH2) || true

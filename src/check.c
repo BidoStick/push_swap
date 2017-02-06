@@ -31,7 +31,7 @@ static int	ft_isdig(char *str)
 	return (1);
 }
 
-static int	ft_isint(char *str)
+static int	ft_is_int(char *str)
 {
 	intmax_t	nbr;
 
@@ -69,7 +69,7 @@ int			ft_checknbr(char *str, t_box *box)
 
 	nbr = 0;
 	ft_isdig(str);
-	nbr = ft_isint(str);
+	nbr = ft_is_int(str);
 	while (box)
 	{
 		if (box->nbr == nbr)
